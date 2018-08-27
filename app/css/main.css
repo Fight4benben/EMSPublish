@@ -3,6 +3,9 @@
 }
 /*2018综合修改*/
 /*测试*/
+#treeview{
+    height:400px!important;
+}
 .Statistic-h{
  height:786px;
  width: 100%;
