@@ -3,6 +3,11 @@
 }
 /*2018综合修改*/
 /*测试*/
+.R-Table{
+    height:780px;
+    border:1px solid #B4B4B5;
+    clear:both;
+}
 .col-xs-12 .equip-right{
     width:200px;
     margin-right:10px;
