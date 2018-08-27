@@ -23,6 +23,17 @@
     height:776px;
     border:1px solid #B4B4B5;
 }
+.Rank-Columnar{
+    height:315px;
+    clear:both;
+    border:1px solid #B4B4B5;
+    margin-bottom:10px;
+}
+.Rank-Table{
+    height:435px;
+    clear:both;
+    border:1px solid #B4B4B5;
+}
 .overall{
     padding-left:0!important;
     padding-right:0!important;
