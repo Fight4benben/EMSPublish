@@ -11,9 +11,9 @@
 .OverAll-top button{
     width:100px;
     height: 35px;
-    background: #007CDE;
+    /* background: #007CDE;
     color: #FFF;
-    border: 0;
+    border: 0; */
     margin-right:5px;
 }
 .OverAll-top button i{
