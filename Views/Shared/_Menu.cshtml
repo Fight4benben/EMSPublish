@@ -187,6 +187,20 @@
                 </li>
             }
 
+            @if (menu.Menus.Contains("9P") || menu.Menus.Contains("all"))
+            {
+                <li id="settings" class="">
+                    <a href="javascript:;">
+                        <i class="fa fa-gears"></i><span class="title">系统设置 </span><span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu" id="">
+                        <!-- rest/sysstatus -->
+                        <li id="connectStatus" class=""><a href="~/Setting/OutOfWork"><i class="fa fa-caret-right"></i>重点设备报警设置</a></li>
+
+                    </ul>
+                </li>
+            }
+
         </ul>
     </div>
 </div>
