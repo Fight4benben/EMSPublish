@@ -1,11 +1,10 @@
-var DeviceAlarm = (function(){
+var DepartmentAlarm = (function(){
 
-	function _deviceAlarm(){
-
+	function _departmentAlarm(){
 		this.show = function(){
 			initDom();
 
-			var url="/api/AlarmDevice";
+			var url="/api/AlarmDepartment";
 
 			getDataFromServer(url,"");
 		}
@@ -76,7 +75,7 @@ var DeviceAlarm = (function(){
 					date = $("#daycalendarBox").val();
 				var energyCode = $("#energys").val();
 
-				var url = "/api/AlarmDevice";
+				var url = "/api/AlarmDepartment";
 				var params = "buildId="+buildId+"&date="+date+"&type="+type+"&energyCode="+energyCode;
 
 				getDataFromServer(url,params);
@@ -204,23 +203,17 @@ var DeviceAlarm = (function(){
 
 		}
 
-		function setRowColor(rowIndex){
-
-		}
-
 	};
 
-	return _deviceAlarm;
+	return _departmentAlarm;
 
 })();
 
 jQuery(document).ready(function($) {
-
 	$("#alarm").attr("class","start active");
-	$("#equipAlarm").attr("class","active");
+	$("#deptAlarm").attr("class","active");
 	
-	var deviceAlarm = new DeviceAlarm();
+	var departmentAlarm = new DepartmentAlarm();
 
-	deviceAlarm.show();
-
+	departmentAlarm.show();
 });
