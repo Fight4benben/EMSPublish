@@ -32,12 +32,67 @@ var EMS = {
 		},
 		searchTree:function($treeview,searchContent){
 			var array = $treeview.treeview('search',[searchContent,{
-				ignoreCase:true,
+				ignoreCase:false,
 				exactMatch:false,
 				revealResults:true
 			}]);
 
 			return array;
+		},
+		isInteger:function(num){
+			var regular = /^[0-9]*[1-9][0-9]*$/;
+			if(!regular.test(num)){
+				return false;
+			}else
+				return true;
+		},
+		getSum:function(array){
+			var sum=0;
+			sum = array.reduce(function(pre,cur,index,array){
+				if(cur==undefined)
+					return pre;
+				else
+					return pre + cur;
+			})
+			return sum;
+		},
+		getDateByString:function(timeString,format){
+			var datePart = timeString.split(' ')[0];
+			var timePart = timeString.split(' ')[1];
+			var year,month,date;
+			var hour,minute;
+			switch(format){
+				case "yyyy-MM-dd":
+					year = parseInt(datePart.split('-')[0]);
+					month = parseInt(datePart.split('-')[1])-1;
+					date = parseInt(datePart.split('-')[2]);
+				break;
+				case "yyyy/MM/dd":
+					year = parseInt(datePart.split('/')[0]);
+					month = parseInt(datePart.split('/')[1])-1;
+					date = parseInt(datePart.split('/')[2]);
+				break;
+			}
+
+			hour = parseInt(timePart.split(':')[0]);
+			minute = parseInt(timePart.split(':')[1]);
+
+			return new Date(year,month,date,hour,minute);
+		},
+		dateDiff:function(start,end){
+			var startYear = start.getFullYear();
+			var startMonth = start.getMonth();
+			var startDate = start.getDate();
+
+			var endYear = end.getFullYear();
+			var endMonth = end.getMonth();
+			var endDate = end.getDate();
+
+			var startValue=new Date(startYear,startMonth,startDate);
+			var endValue = new Date(endYear,endMonth,endDate);
+
+			var days = endValue.getTime()-startValue.getTime();
+			return parseInt(days/(1000*60*60*24));
 		}
 	},
 
@@ -147,7 +202,7 @@ var EMS = {
 	},
 	Chart:{
 		//绘制echarts饼图
-		showPie:function(charts,$Pie,names,values,seriesName){
+		showPie:function(charts,$Pie,names,values,seriesName,legendFlag){
 
 			option = {
 				tooltip : {
@@ -157,7 +212,8 @@ var EMS = {
 			    legend: {
 			        orient: 'horizontal',
 			        bottom: 'bottom',
-			        data: names
+			        data: names,
+			        show:legendFlag
 			    },
 			    series : [
 			        {
@@ -258,7 +314,7 @@ var EMS = {
 
         	charts.init($Bar.get(0),'macarons').setOption(option);
 		},
-		showLandscapeBar:function(charts,$Bar,legendData,xData,series,gridSetting){
+		showLandscapeBar:function(charts,$Bar,legendData,xData,series,gridSetting,dataZoom){
 			var option = {
 	            tooltip: {
 	                trigger: 'axis',
@@ -298,10 +354,13 @@ var EMS = {
 			if(gridSetting != undefined)
 				option.grid = gridSetting;
 
+			if(dataZoom != undefined)
+				option.dataZoom = dataZoom
+
 
         	charts.init($Bar.get(0),'macarons').setOption(option);
 		},
-		showStackBar:function(charts,$Pie,names,xData,series,unit){
+		showStackBar:function(charts,$Pie,names,xData,series,unit,legendFlag){
 			var option = {
 				tooltip : {
 		        	trigger: 'axis',
@@ -311,7 +370,8 @@ var EMS = {
 		    	},
 				legend: {
 		        	data:names,
-		        	bottom:'bottom'
+		        	bottom:'bottom',
+			        show:legendFlag
 			    },
 			    grid: {
 			        left: '3%',

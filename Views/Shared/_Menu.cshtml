@@ -70,6 +70,11 @@
                         {
                             <li id="table" class=""><a href="/Circuit/Compare"><i class="fa fa-caret-right"></i>同比分析</a></li>
                         }
+
+                        @if (menu.Menus.Contains("3.5") || menu.Menus.Contains("all"))
+                        {
+                            <li id="ringratio" class=""><a href="/Circuit/RingRatio"><i class="fa fa-caret-right"></i>日同环比分析</a></li>
+                        }
                         <!-- <li id="" class=""><a href="javascript:;"> <span style="color:#b1b0b0">趋势曲线</span></a></li> -->
                         <!-- <li id="te_loss" class=""><a href="rest/tela"><i class="fa fa-caret-right"></i>损耗分析</a></li> -->
                         <!-- <li id="te_env" class=""><a href="rest/tandh"><i class="fa fa-caret-right"></i>环境参数</a></li> -->
@@ -99,6 +104,10 @@
                         @if (menu.Menus.Contains("4.4") || menu.Menus.Contains("all"))
                         {
                             <li id="se_statistic" class=""><a href="/Item/Statistic"><i class="fa fa-caret-right"></i>分类分项统计报表</a></li>
+                        }
+                        @if (menu.Menus.Contains("4.5") || menu.Menus.Contains("all"))
+                        {
+                            <li id="se_ringratio" class=""><a href="/Item/RingRatio"><i class="fa fa-caret-right"></i>日同环比分析</a></li>
                         }
                     </ul>
                 </li>
@@ -198,9 +207,14 @@
                         <i class="fa fa-gears"></i><span class="title">系统设置 </span><span class="arrow "></span>
                     </a>
                     <ul class="sub-menu" id="">
-                        <!-- rest/sysstatus -->
-                        <li id="connectStatus" class=""><a href="~/Setting/OutOfWork"><i class="fa fa-caret-right"></i>重点设备报警设置</a></li>
-
+                        @if (menu.Menus.Contains("9.1") || menu.Menus.Contains("all"))
+                        {
+                            <li id="deviceLimit" class=""><a href="~/Setting/OutOfWork"><i class="fa fa-caret-right"></i>重点设备报警设置</a></li>
+                        }
+                        @if (menu.Menus.Contains("9.2") || menu.Menus.Contains("all"))
+                        {
+                            <li id="departmentLimit" class=""><a href="~/Setting/DepartmentOutOfWork"><i class="fa fa-caret-right"></i>部门报警设置</a></li>
+                        }
                     </ul>
                 </li>
             }
