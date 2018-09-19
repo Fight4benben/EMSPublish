@@ -129,6 +129,10 @@
                         {
                             <li id="de_count" class=""><a href="/Department/Report"><i class="fa fa-caret-right"></i>部门用能统计</a></li>
                         }
+                        @if (menu.Menus.Contains("5.6") || menu.Menus.Contains("all"))
+                        {
+                            <li id="de_average" class=""><a href="/Department/Average"><i class="fa fa-caret-right"></i>部门均值分析</a></li>
+                        }
                         @if (menu.Menus.Contains("5.3") || menu.Menus.Contains("all"))
                         {
                             <li id="de_compare" class=""><a href="/Department/Compare"><i class="fa fa-caret-right"></i>同比分析</a></li>
@@ -141,6 +145,7 @@
                         {
                             <li id="de_check" class=""><a href="/Department/Check"><i class="fa fa-caret-right"></i>节能考核</a></li>
                         }
+
                     </ul>
                 </li>
             }
@@ -193,9 +198,25 @@
                         }
                         @if (menu.Menus.Contains("8.4") || menu.Menus.Contains("all"))
                         {
-                            <li id="deptOutofworkAlarm" class=""><a href="/Alarm/DepartmentOutOfAlarm"><i class="fa fa-caret-right"></i>办公室异常时段用能提示</a></li>
+                            <li id="deptOutofworkAlarm" class=""><a href="/Alarm/DepartmentOutOfAlarm"><i class="fa fa-caret-right"></i>非工作时段智能报警</a></li>
                         }
+                        
+                    </ul>
+                </li>
+            }
 
+            @if (menu.Menus.Contains("XP") || menu.Menus.Contains("all"))
+            {
+                <li id="menu_state" class="">
+                    <a href="javascript:;">
+                        <i class="fa fa-signal"></i><span class="title">系统状态 </span><span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu" id="">
+                        @if (menu.Menus.Contains("X.1") || menu.Menus.Contains("all"))
+                        {
+                            <li id="menu_communicate" class=""><a href="/Infomation/MeterStatus"><i class="fa fa-caret-right"></i>通讯状态</a></li>
+                        }
+                        
                     </ul>
                 </li>
             }
@@ -213,7 +234,7 @@
                         }
                         @if (menu.Menus.Contains("9.2") || menu.Menus.Contains("all"))
                         {
-                            <li id="departmentLimit" class=""><a href="~/Setting/DepartmentOutOfWork"><i class="fa fa-caret-right"></i>部门报警设置</a></li>
+                            <li id="departmentLimit" class=""><a href="~/Setting/DepartmentOutOfWork"><i class="fa fa-caret-right"></i>办公室报警设置</a></li>
                         }
                     </ul>
                 </li>
