@@ -7,7 +7,11 @@ var Check = (function(){
 
 			var url="/api/DepartmentCheck";
 
-			getDataFromServer(url,"");
+			var buildId=$.cookie('buildId');
+			if(buildId == undefined || buildId==null || buildId == "null")
+				getDataFromServer(url,"");
+			else
+				getDataFromServer(url,"buildId="+buildId);
 		}
 
 		var buildTarget;
@@ -66,6 +70,7 @@ var Check = (function(){
 			$("#searchButton").click(function(event) {
 				
 				var buildId = $("#buildinglist").val();
+				$.cookie("buildId",buildId,{path:'/'})
 				var date; 
 
 				var type =$("#dateType").val();
@@ -189,6 +194,9 @@ var Check = (function(){
 				return;
 
 			EMS.DOM.initSelect(data.builds,$("#buildinglist"),"buildName","buildID");
+
+			if($.cookie("buildId")!=undefined && $.cookie("buildId")!= null)
+				$("#buildinglist").val($.cookie("buildId"));
 		}
 
 		function showEnergys(data){
