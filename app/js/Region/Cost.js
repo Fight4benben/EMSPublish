@@ -5,11 +5,7 @@ var RegionReport = (function(){
 		this.show=function(){
 			var url ="/api/Price";
 
-			var buildId=$.cookie('buildId');
-			if(buildId==undefined || buildId==null || buildId == "null")
-				getDataFromServer(url,"");
-			else
-				getDataFromServer(url,"buildId="+buildId);
+			getDataFromServer(url,"");
 		}
 		//公开暴露的方法:初始化页面
 		this.initDom = function(){
@@ -219,12 +215,12 @@ var RegionReport = (function(){
 
 			EMS.DOM.initSelect(data.regionReportModel.builds,$("#buildinglist"),"buildName","buildID");
 
-			if($.cookie('buildId') != undefined && $.cookie('buildId')!=null)
-				$("#buildinglist").val($.cookie("buildId"));
+			// if($.cookie('buildId') != undefined && $.cookie('buildId')!=null)
+			// 	$("#buildinglist").val($.cookie("buildId"));
 
 			$("#buildinglist").change(function(event) {
 				var buildId = $(this).val();
-				$.cookie("buildId",buildId,{path:'/'});
+				//$.cookie("buildId",buildId,{path:'/'});
 				 //console.log($("#daycalendarBox").val());
 				getDataFromServer("/api/Price","buildId="+buildId+"&type="+getTypeByReportSelected()+"&date="+$("#daycalendarBox").val());
 			});
