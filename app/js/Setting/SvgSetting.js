@@ -85,10 +85,11 @@ var SvgSetting=(function(){
                 'padding-right':'8px',
             });
             $trs.css('background','bluesky').removeClass('currentSelect');
-            $("#selectedSvg>table").on('check.bs.table',function(){
+
+            $("#mainTable").on('click-row.bs.table',function(e,row,$element){
                 $(".currentSelect").css('background','white').removeClass('currentSelect');
-                selectedInfo = $("#selectedSvg>table").bootstrapTable('getSelections');
-                getSelectedInfo(selectedInfo);
+                $element.css('background','#cee4f9').addClass('currentSelect')
+                selectedInfo = row
                 console.log(selectedInfo)
             })
         }
@@ -110,13 +111,12 @@ var SvgSetting=(function(){
         $("#addBtn").click(function(e){
             var buildid = $("#buildinglist").val();
             var svgName = $("#svgName").val();
-            //var params = "buildid="+buildid+"&svgName="+svgName;
             $.ajax({
                 type: "post",
                 url: baseUrl,
                 data: {
                     buildid:buildid,
-                    svgName:svgName
+                    svgname:svgName
                 },
                 success: function (response) {
                     console.log(response)
@@ -125,10 +125,28 @@ var SvgSetting=(function(){
 
                 }
             });
+        });
+        //删除
+        $("#delBtn").click(function(event){
+            var selectRow = selectedInfo;
+            var svgid = selectRow.svgId;
+            var buildId = $("#buildinglist").val();
+            $.ajax({
+                type: "DELETE",
+                url: baseUrl,
+                data: {
+                    svgid:svgid
+                },
+                success: function (response) {
+                    if(response.flag == true){
+                        alert('删除一次图成功！！')
+                        getDataFromServer("/api/SvgSetting","buildId="+buildId);
+                        $("#myModal3").modal('hide')  
+                    }
+                }
+            });
         })
-
 	}
-
 	return _svgSetting;
 
 })();
