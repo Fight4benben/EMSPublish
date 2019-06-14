@@ -126,6 +126,25 @@ var SvgSetting=(function(){
                 }
             });
         });
+        //修改
+        $("#myModal2").on('shown.bs.modal',function (e) { 
+            var selectRow = selectedInfo;
+            var svgid = $("#svgid").val(selectRow.svgId)
+            var svgname = $("#svgname").val(selectRow.svgName)
+        });
+        $("#edtBtn").click(function(){
+            var svgid = $("#svgid").val();
+            var svgname = $("svgname").val();
+            //var data = "svgid="+svgid+"&"
+            $.ajax({
+                type: "PUT",
+                url: baseUrl,
+                data: ,
+                success: function (response) {
+                    
+                }
+            });
+        })
         //删除
         $("#delBtn").click(function(event){
             var selectRow = selectedInfo;
