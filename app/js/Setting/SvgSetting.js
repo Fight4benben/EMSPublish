@@ -90,7 +90,6 @@ var SvgSetting=(function(){
                 $(".currentSelect").css('background','white').removeClass('currentSelect');
                 $element.css('background','#cee4f9').addClass('currentSelect')
                 selectedInfo = row
-                console.log(selectedInfo)
             })
         }
 
@@ -119,29 +118,35 @@ var SvgSetting=(function(){
                     svgname:svgName
                 },
                 success: function (response) {
-                    console.log(response)
+                    if(response.flag == true){
+                        alert('新增成功！！')
+                        getDataFromServer("/api/SvgSetting","buildId="+buildid);
+                        $("#myModal").modal('hide')
+                    }
                 },
-                error:function(){
-
-                }
             });
         });
         //修改
         $("#myModal2").on('shown.bs.modal',function (e) { 
             var selectRow = selectedInfo;
-            var svgid = $("#svgid").val(selectRow.svgId)
-            var svgname = $("#svgname").val(selectRow.svgName)
+            $("#svgid").val(selectRow.svgId)
+            $("#svgname").val(selectRow.svgName)
         });
         $("#edtBtn").click(function(){
             var svgid = $("#svgid").val();
             var svgname = $("svgname").val();
-            //var data = "svgid="+svgid+"&"
+            var buildId = $("#buildinglist").val();
+            var data = "svgid="+svgid+"&svgname="+svgname
             $.ajax({
                 type: "PUT",
                 url: baseUrl,
-                data: ,
+                data: data,
                 success: function (response) {
-                    
+                    if(response.flag == true){
+                        alert('修改成功！！')
+                        getDataFromServer("/api/SvgSetting","buildId="+buildId);
+                        $("#myModal2").modal('hide')
+                    }
                 }
             });
         })
@@ -169,9 +174,6 @@ var SvgSetting=(function(){
 	return _svgSetting;
 
 })();
-
-
-
 
 jQuery(document).ready(function($) {
 	
