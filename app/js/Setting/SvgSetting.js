@@ -105,6 +105,28 @@ var SvgSetting=(function(){
         $('.upload').click(function(event){
             $(".upload").attr('data-target','#myModal4');
         });
+        
+        //新增
+        $("#addBtn").click(function(e){
+            var buildid = $("#buildinglist").val();
+            var svgName = $("#svgName").val();
+            //var params = "buildid="+buildid+"&svgName="+svgName;
+            $.ajax({
+                type: "post",
+                url: baseUrl,
+                data: {
+                    buildid:buildid,
+                    svgName:svgName
+                },
+                success: function (response) {
+                    console.log(response)
+                },
+                error:function(){
+
+                }
+            });
+        })
+
 	}
 
 	return _svgSetting;
