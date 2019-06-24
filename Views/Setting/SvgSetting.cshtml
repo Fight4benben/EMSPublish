@@ -1,4 +1,5 @@
-﻿<div class="container-fluid main-top equipAlarm">
+﻿
+<div class="container-fluid main-top equipAlarm">
     <div class="col-xs-12">
         <div class="equip-row">
             <div class="filter-width">
@@ -120,15 +121,17 @@
 
   <!--绑定模态框-->
     <div class="modal fade bs-example-modal-sm" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h5 class="modal-title" id="myModalLabel">绑定</h5>
           </div>
-          <div class="modal-body">
-            <div id="meter" style="height:150px"></div>
-            <div id="params" style="height:150px"></div>
+          <div class="modal-body" style="height:420px">
+            <div class="childBD">
+              <div id="meter" style="height:400px;float: left;width: 50%"></div>
+              <div id="params" style="height:400px;float: left;width: 50%"></div>
+            </div>
           </div>
           <div class="modal-footer">
             <button id="bindBtn" type="button" class="btn btn-primary">确定</button>
@@ -141,3 +144,4 @@
 </div>
 <script src="~/app/js/Setting/SvgSetting.js"></script>
 <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+
