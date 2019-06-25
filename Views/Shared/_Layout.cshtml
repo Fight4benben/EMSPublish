@@ -96,8 +96,44 @@
     <div class="footer" align="center">
         <div class="footer-inner">@DateTime.Now.Year &copy;Acrel</div>
         <div class="footer-tools">
-            <span class="go-top"><i class="fa fa-angle-up"></i></span>
+            <span class="go-top" data-toggle="modal"><i class="fa fa-angle-up"></i></span>
         </div>
     </div>
+
+
+    <div class="modal fade bs-example-modal-sm" id="myModalAlarm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <h5 class="modal-title" id="myModalLabel">事件</h5> -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" data-id="tabContent1"><a href="#">参数越限</a></li>
+                <li role="presentation" data-id="tabContent2"><a href="#">仪表断线</a></li>
+            </ul>
+          </div>
+          <div class="modal-body" style="height:520px">
+            <div class="tabs-contents">
+                <div class="tab-content active" id="tabContent1">111</div>
+                <!-- 标题2内容区域 -->
+                <div class="tab-content" id="tabContent2">222</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
+
+<script src="~/app/js/Alarm/OverlimitAlarm.js"></script>
+
+<style>
+    .tab-content{
+        display: none;
+    }
+    .tab-content.active{
+        display: block;
+    }
+</style>
