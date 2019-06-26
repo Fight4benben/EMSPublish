@@ -141,7 +141,8 @@ var OverAlarm = (function(){
                if(data.state == 0){
                    for(var i=0;i<ids.length;i++){
                     $('#'+ids[i]).text("已确认")
-                   }  
+                   }
+                   $("#AlarmImgID").attr('src','/Assets/img/jing.png');
                }
             })
         })

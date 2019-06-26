@@ -15,13 +15,16 @@ var AlarmRecord = (function(){
         }
         function initButton(){
 			$("#Load").click(function(event) {
-				var url = "/api/MeterAlarmLog";
-
-				var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                if($("#alarmTypeList").val() == 0){
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                    $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
+                    "&pageIndex="+1+"&pageSize="+100;
+                }else{
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
                 $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
-                "&alarmType="+$("#alarmTypeList").val()+"&pageIndex="+1+"&pageSize="+50;
-
-				getDataFromServer(url,params);
+                "&alarmType="+$("#alarmTypeList").val()+"&pageIndex="+1+"&pageSize="+100;
+                }
+				getDataFromServer('/api/MeterAlarmLog',params);
 			});
 		}
         function getDataFromServer(url,params){
@@ -50,21 +53,38 @@ var AlarmRecord = (function(){
             EMS.DOM.initSelect(data.builds,$("#buildinglist"),"buildName","buildID");
             
             $("#buildinglist").change(function(event) {
-				var buildId = $("#buildinglist").val();
-                getDataFromServer("/api/MeterAlarmLog","buildID="+buildId+"&alarmType="+$("#alarmTypeList").val()+
-                "&beginDate="+$("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+"&pageIndex="+1+"&pageSize="+50);
+                
+                if($("#alarmTypeList").val() == 0){
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                    $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
+                    "&pageIndex="+1+"&pageSize="+100;
+                }else{
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
+                "&alarmType="+$("#alarmTypeList").val()+"&pageIndex="+1+"&pageSize="+100;
+                }
+				getDataFromServer('/api/MeterAlarmLog',params);
 			});
         }
         function showalarmType(data){
             if(!data.hasOwnProperty('alarmType'))
 				return;
-
-            EMS.DOM.initSelect(data.alarmType,$("#alarmTypeList"),"typeName","id");
+            var array = data.alarmType;
+            //array.push({id:0,typeName:'无'})
+            array.unshift({id:0,typeName:'无'})
+            EMS.DOM.initSelect(array,$("#alarmTypeList"),"typeName","id");
             
             $("#alarmTypeList").change(function(event) {
-				var buildId = $("#buildinglist").val();
-                getDataFromServer("/api/MeterAlarmLog","buildID="+buildId+"&alarmType="+$("#alarmTypeList").val()+
-                "&beginDate="+$("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+"&pageIndex="+1+"&pageSize="+50);
+				if($("#alarmTypeList").val() == 0){
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                    $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
+                    "&pageIndex="+1+"&pageSize="+100;
+                }else{
+                    var params = "buildID="+$("#buildinglist").val()+"&beginDate="+
+                $("#StartdaycalendarBox").val()+"&endDate="+$("#EnddaycalendarBox").val()+
+                "&alarmType="+$("#alarmTypeList").val()+"&pageIndex="+1+"&pageSize="+100;
+                }
+				getDataFromServer('/api/MeterAlarmLog',params);
 			});
         }
         function showTable(data){
@@ -116,7 +136,11 @@ var AlarmRecord = (function(){
                     var beginDate = $("#StartdaycalendarBox").val();
                     var endDate = $("#EnddaycalendarBox").val();
                     var pageIndex = current;
-                    var params ="buildID="+buildID+"&alarmType="+alarmType+"&beginDate="+beginDate+"&endDate="+endDate+"&pageIndex="+pageIndex+"&pageSize="+50;
+                    if(alarmType == 0){
+                        var params ="buildID="+buildID+"&beginDate="+beginDate+"&endDate="+endDate+"&pageIndex="+pageIndex+"&pageSize="+100;
+                    }else{
+                        var params ="buildID="+buildID+"&alarmType="+alarmType+"&beginDate="+beginDate+"&endDate="+endDate+"&pageIndex="+pageIndex+"&pageSize="+100;
+                    }
                     $.ajax({
                         type :"GET",
                         url :url,
