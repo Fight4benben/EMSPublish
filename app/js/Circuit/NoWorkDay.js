@@ -21,7 +21,11 @@ var NoWorkDay = (function(){
 					cicruitIDs:getCheckedTreeIdArray().join(','),beginDate:$("#STdaycalendarBox").val(),endDate:$("#EDdaycalendarBox").val()
 				},'POST');
 			});
-
+            //导出
+            $("#dayExport").click(function(event){
+               //$('#mainTable').tableExport({type:'excel', fileName: $("#EDdaycalendarBox").val()+'非工作日工作日报表', escape:'false'});
+               $('#mainTable').tableExport({type:'excel',escape:'false',fileName: '非工作日工作日报表'});
+            })
 			$("#treeSearch").click(function(){
 				var inputValue = $("#search-input").val().trim();
 
@@ -261,7 +265,7 @@ var NoWorkDay = (function(){
                 row.noWork = element.noWork;
                 rows.push(row);
             });
-            $("#dayReport").html('<table></table>');
+            $("#dayReport").html('<table id="mainTable"></table>');
 			var windowWidth = $(window).width();
 			var totalHeight;
 			if(windowWidth>1024)
