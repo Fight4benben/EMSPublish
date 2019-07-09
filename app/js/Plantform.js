@@ -338,6 +338,11 @@ var Plantform = (function(){
             $("#yesWgasValue").text('--');
             $("#dayWgas").text('');
             $("#dayWgasValue").text('--');
+        };
+        setTimeout(refresh,300000);
+        function refresh(){
+            getDataFromServer(baseUrl,"");
+            setTimeout(refresh,300000)
         }
     }
 
