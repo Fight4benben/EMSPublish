@@ -51,6 +51,7 @@ var Toxic = (function(){
 		}
 
         function showTreeview(data){
+            $("#treeview").html('')
             if(!data.hasOwnProperty('devices'))
                 return;
             $.each(data.devices, function(key, val) {
