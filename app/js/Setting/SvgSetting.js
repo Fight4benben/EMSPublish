@@ -1,10 +1,9 @@
 var tool = {
     download:function(svgId){
-        console.log(svgId);
         var url = '/api/SvgFile';
         var downloadUrl = url+'?'+'id='+svgId;
 
-        window.location.href=downloadUrl
+        window.location.href=downloadUrl;
     }
 }
 var SvgSetting=(function(){
@@ -150,7 +149,7 @@ var SvgSetting=(function(){
         });
         $("#edtBtn").click(function(){
             var svgid = $("#svgID").val();
-            var svgname = $("svgname").val();
+            var svgname = $("#svgname").val();
             var buildId = $("#buildinglist").val();
             var data = "svgid="+svgid+"&svgname="+svgname
             $.ajax({
@@ -214,6 +213,7 @@ var SvgSetting=(function(){
             .done(function(res){
                 if(res.flag == true){
                     alert('文件上传成功！')
+                    $("#myModal4").modal('hide')
                 }
             })
             .fail(function(res){
