@@ -264,15 +264,20 @@ var SvgSetting=(function(){
                     
                     row.name = val.name;
                     row.id = val.id;
-                    for(var i=0;i<selectMeter.length;i++){
-                        if(val.id == selectMeter[i]){
-                            row.binded = true
-                            tableRows.push(row)
-                            return
-                        }else{
-                            row.binded = false
+                    if(selectMeter != null || selectMeter != undefined){
+                        for(var i=0;i<selectMeter.length;i++){
+                            if(val.id == selectMeter[i]){
+                                row.binded = true
+                                tableRows.push(row)
+                                return
+                            }else{
+                                row.binded = false
+                            }
                         }
-                    } 
+                    }else{
+                        row.binded = false
+                        tableRows.push(row)
+                    }
                     tableRows.push(row)
                 });
                 var height = $("#meter").height();
@@ -286,15 +291,20 @@ var SvgSetting=(function(){
                     var row = {};
                     row.name = val.name;
                     row.id = val.id;
-                    for(var i=0;i<selectParams.length;i++){
-                        if(val.id == selectParams[i]){
-                            row.binded = true
-                            rows.push(row)
-                            return
-                        }else{
-                            row.binded = false
+                    if(selectParams != null || selectParams !=undefined){
+                        for(var i=0;i<selectParams.length;i++){
+                            if(val.id == selectParams[i]){
+                                row.binded = true
+                                rows.push(row)
+                                return
+                            }else{
+                                row.binded = false
+                            }
                         }
-                    } 
+                    }else{
+                        row.binded = false
+                        rows.push(row)
+                    }
                     rows.push(row)
                });
                var height = $("#params").height();
