@@ -247,14 +247,7 @@ var CircuitPay = (function(){
             
             //导出的Excel
 			$("#dayExport").click(function(event) {
-				var circuitsArray=[];
-				$.each(getCheckedTreeIdArray(), function(key, val) {
-					circuitsArray.push(val.substr(-4));
-				});
-				
-				window.location = "/Circuit/GetExcel?buildId="+$("#buildinglist").val()+
-				"&circuits="+circuitsArray.join(',')+
-				"&type="+getTypeByReportSelected()+"&date="+$("#daycalendarBox").val()
+				 $('#divPivotGrid').tableExport({type:'excel', escape:'false',});
             });
             
 			$("#treeSearch").click(function(){

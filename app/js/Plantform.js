@@ -202,8 +202,8 @@ var Plantform = (function(){
             $.each(dayData,function(key,val){
                 switch (val.id) {
                     case "01000":
-                        $("#yesPower").text('今日用电');
-                        $("#dayPower").text('昨日用电');
+                        $("#yesPower").text('昨日用电');
+                        $("#dayPower").text('今日用电');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yespowerValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayPowerValue").text((val.value/10000).toFixed(2)+'万');
@@ -213,8 +213,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "02000":
-                        $("#yesWater").text('今日用水');
-                        $("#dayWater").text('昨日用水');
+                        $("#yesWater").text('昨日用水');
+                        $("#dayWater").text('今日用水');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesWaterValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayWaterValue").text((val.value/10000).toFixed(2)+'万');
@@ -224,8 +224,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "03000":
-                        $("#yesGas").text('今日燃气');
-                        $("#dayGas").text('昨日燃气');
+                        $("#yesGas").text('昨日燃气');
+                        $("#dayGas").text('今日燃气');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesGasValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayGasValue").text((val.value/10000).toFixed(2)+'万');
@@ -235,8 +235,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "40000":
-                        $("#yesWgas").text('今日蒸汽');
-                        $("#dayWgas").text('昨日蒸汽');
+                        $("#yesWgas").text('昨日蒸汽');
+                        $("#dayWgas").text('今日蒸汽');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesWgasValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayWgasValue").text((val.value/10000).toFixed(2)+'万');
@@ -260,8 +260,8 @@ var Plantform = (function(){
                 switch (val.id) {
                     case "01000":
                         //$("#Unit").html('电'+'<br/>(kW·h)')
-                        $("#yesPower").text('今日用电');
-                        $("#dayPower").text('昨日用电');
+                        $("#yesPower").text('昨日用电');
+                        $("#dayPower").text('今日用电');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yespowerValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayPowerValue").text((val.value/10000).toFixed(2)+'万');
@@ -271,8 +271,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "02000":
-                        $("#yesWater").text('今日用水');
-                        $("#dayWater").text('昨日用水');
+                        $("#yesWater").text('昨日用水');
+                        $("#dayWater").text('今日用水');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesWaterValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayWaterValue").text((val.value/10000).toFixed(2)+'万');
@@ -282,8 +282,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "03000":
-                        $("#yesGas").text('今日燃气');
-                        $("#dayGas").text('昨日燃气');
+                        $("#yesGas").text('昨日燃气');
+                        $("#dayGas").text('今日燃气');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesGasValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayGasValue").text((val.value/10000).toFixed(2)+'万');
@@ -293,8 +293,8 @@ var Plantform = (function(){
                         }
                         break;
                     case "40000":
-                        $("#yesWgas").text('今日蒸汽');
-                        $("#dayWgas").text('昨日蒸汽');
+                        $("#yesWgas").text('昨日蒸汽');
+                        $("#dayWgas").text('今日蒸汽');
                         if(val.lastValue >=10000 || val.value >= 10000){
                             $("#yesWgasValue").text((val.lastValue/10000).toFixed(2)+'万');
                             $("#dayWgasValue").text((val.value/10000).toFixed(2)+'万');
