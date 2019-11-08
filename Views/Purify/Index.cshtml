@@ -1,5 +1,7 @@
 ﻿<div id="svgcontainer">
 
+   
+
 </div>
 <script type="text/javascript">
     var Air = (function(){
@@ -260,10 +262,12 @@
         var width = (height * 16) / 9;
         $("#purifyview").attr("class", "start active");
         $("#purifyview").attr("class", "active");
-        EMS.Loading.show($("#main-content").parent('div'));
-        if (localStorage.getItem("svgView") != null && localStorage.getItem("svgView") != 'null' && localStorage.getItem("svgView") != undefined &&
-            localStorage.getItem("svgView").trim() != '') {
-            $("#svgcontainer").append(localStorage.getItem("svgView"));
+	EMS.Loading.show($("#main-content").parent('div'));
+        try
+        {
+		if (localStorage.getItem("svgView") != null && localStorage.getItem("svgView") != 'null' && localStorage.getItem("svgView") != undefined &&
+            		localStorage.getItem("svgView").trim() != '') {
+            	$("#svgcontainer").append(localStorage.getItem("svgView"));
             $("#svg8").height(height);
             $("#svg8").width(width);
             $("#svg8").css('display', 'block')
@@ -279,7 +283,12 @@
                 EMS.Loading.hide($("#main-content").parent('div'));
             });
         }
-        
+
+        }catch{
+	    EMS.Loading.hide($("#main-content").parent('div'));
+	}finally{
+	   
+	}
 
         
         //$("#svgcontainer").height(height);
